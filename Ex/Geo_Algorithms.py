@@ -106,4 +106,26 @@ class GeoAlgorithms:
         functions.sort_points(l)
         return l
 
+    @staticmethod
+    def Segments_Intersect(pa: list, pb: list, pc: list, pd: list):
+        p1, p2 = functions.bounding_rect(pa, pb)
+        p3, p4 = functions.bounding_rect(pc, pd)
+        if not functions.rectangle_intersect(p1, p2, p3, p4):
+            return False
+        s1 = functions.area(pc, pd, pa)
+        s2 = functions.area(pc, pd, pb)
+        s3 = functions.area(pa, pb, pc)
+        s4 = functions.area(pa, pb, pd)
+        if ((s1 > 0 > s2) or (s1 < 0 < s2)) and ((s3 > 0 > s4) or (s3 < 0 < s4)):
+            return True
+        elif s1 == 0 and functions.between(pc, pd, pa):
+            return True
+        elif s2 == 0 and functions.between(pc, pd, pb):
+            return True
+        elif s3 == 0 and functions.between(pa, pb, pc):
+            return True
+        elif s4 == 0 and functions.between(pa, pb, pd):
+            return True
+        return False
+
 
