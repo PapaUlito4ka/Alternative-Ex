@@ -12,6 +12,7 @@ from PyQt5 import QtCore
 from JarvisWindow import JarvisWin
 from GrahamWindow import GrahamWin
 from SequantialWindow import SequantialWin
+from ConvexHullWindow import ConvexHullWin
 
 
 class MainWindow(QWidget):
@@ -26,7 +27,7 @@ class MainWindow(QWidget):
         self.grid.addWidget(self.butJarvis(), 0, 0)
         self.grid.addWidget(self.butGraham(), 0, 1)
         self.grid.addWidget(self.butSequantial(), 0, 2)
-
+        self.grid.addWidget(self.butHull(), 1, 0)
 
         self.setLayout(self.grid)
 
@@ -61,6 +62,13 @@ class MainWindow(QWidget):
 
         return but
 
+    def butHull(self):
+        but = QPushButton()
+        but.setText("Convex Hull Algorithm")
+        but.clicked.connect(self.openConvexHullWindow)
+
+        return but
+
     def openJarvisWindow(self):
         self.jarvis = JarvisWin()
 
@@ -69,6 +77,10 @@ class MainWindow(QWidget):
 
     def openSequantialWindow(self):
         self.seq = SequantialWin()
+
+    def openConvexHullWindow(self):
+        self.hull = ConvexHullWin()
+
 
 if __name__ == '__main__':
 
