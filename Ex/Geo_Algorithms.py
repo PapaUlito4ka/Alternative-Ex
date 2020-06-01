@@ -1,6 +1,7 @@
 import functions
 import math
 import Dimangan
+from Segments_Algoritms import VPO
 
 
 class GeoAlgorithms:
@@ -10,6 +11,8 @@ class GeoAlgorithms:
 
     @staticmethod
     def Jarvis_March(points: list):
+        if len(points) == 1:
+            return points
         m = functions.find_first_point(points)
         b = []
         b.append(points[m])
@@ -138,6 +141,10 @@ class GeoAlgorithms:
     def Chan_Algorithm(points: list):
         return Dimangan.Chan_Algorithm(points)
 
+    # Методы Романа
+    @staticmethod
+    def ASI(segments: list):
+        return VPO(segments)
 
 
 

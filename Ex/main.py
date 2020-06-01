@@ -28,6 +28,7 @@ while run:
     print("Module: 3-d algoritms")
     print("Module: Segment Algorithms")
     print("\tEnter 6 to test Segment intersection algorithm")
+    print("\tEnter 7 to test Set of segments intersection algorithm")
     print("Enter 0 to exit program")
 
     choice = int(input("Enter number here: "))
@@ -72,6 +73,7 @@ while run:
             res = GeoAlgorithms.Sequential(pts)
             for j in range(len(res)):
                 print(str(i + 1) + " point: " + str(res[j][0]) + " " + str(res[j][1]))
+        choice = input("Do you want to continue?(y/n)")
         if choice == 'y':
             clear()
         elif choice == 'n':
@@ -82,21 +84,22 @@ while run:
     elif choice == 4 or choice == 5:
         clear()
         print("This algorithm creates convex hull and implements sorting algorithm to do it")
-        n = int(input("Enter number of points"))
+        n = int(input("Enter number of points: "))
         pts = []
         print("Enter points: (Example: 1 2)")
         for i in range(n):
             x, y = input().strip().lstrip().split()
-            pts.append([int(x), int(y)])
+            pts.append((int(x), int(y)))
         print("Result:")
-        if choice == 1:
+        if choice == 4:
             res = GeoAlgorithms.Convex_Hull(pts)
             for i in range(len(res)):
                 print(str(i + 1) + " point: " + str(res[i][0]) + " " + str(res[i][1]))
-        elif choice == 2:
+        elif choice == 5:
             res = GeoAlgorithms.Chan_Algorithm(pts)
             for i in range(len(res)):
                 print(str(i + 1) + " point: " + str(res[i][0]) + " " + str(res[i][1]))
+        choice = input("Do you want to continue?(y/n)")
         if choice == 'y':
             clear()
         elif choice == 'n':
@@ -121,6 +124,7 @@ while run:
             print("Given segments intersect")
         else:
             print("Given segments don't intersect")
+        choice = input("Do you want to continue?(y/n)")
         if choice == 'y':
             clear()
         elif choice == 'n':
@@ -128,6 +132,23 @@ while run:
             run = False
         else:
             clear()
-
-
+    elif choice == 7:
+        clear()
+        print("This algorithm prints out set of crossing segemnts")
+        n = int(input("Enter number of segments: "))
+        s = []
+        for i in range(n):
+            x1, y1, x2, y2 = input("Enter x1, y1, x2, y2 of %d point: " % (i + 1)).rstrip().lstrip().split()
+            t = [[int(x1), int(y1)], [int(x2), int(y2)]]
+            s.append(t)
+        print("Result:")
+        res = GeoAlgorithms.ASI(s)
+        choice = input("Do you want to continue?(y/n)")
+        if choice == 'y':
+            clear()
+        elif choice == 'n':
+            clear()
+            run = False
+        else:
+            clear()
 
