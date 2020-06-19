@@ -2,6 +2,7 @@ import functions
 import math
 import Dimangan
 from Segments_Algoritms import VPO
+import Andrei
 
 
 class GeoAlgorithms:
@@ -100,6 +101,7 @@ class GeoAlgorithms:
                 if i2 - i1 == len(l) - 1:
                     l.append(points[i])
                 elif i2 - i1 == 1:
+                    l.pop()
                     l.insert(i2 - 1, points[i])
                 else:
                     i1 += 1
@@ -146,5 +148,14 @@ class GeoAlgorithms:
     def ASI(segments: list):
         return VPO(segments)
 
+    @staticmethod
+    def GiftWrapping3D(points: list):
+        return Andrei.GiftWrapping(points)
 
+    @staticmethod
+    def DivideAndConquer3D(points: list):
+        return Andrei.DivideAndConquer(points)
 
+    @staticmethod
+    def QuickHull3D(points: list):
+        return Andrei.QuickHull(points)
